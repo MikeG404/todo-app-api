@@ -1,15 +1,22 @@
-import mongoose from "mongoose"
+import { Todo } from '../models/todo.model.js'
 
-const todoService = {
-    getTodos: () => {
-
-    },
-
-    addTodo: () => {
+export const todoService = {
+    getTodos: async () => {
 
     },
 
-    deleteTodo: () => {
+    addTodo: async (title) => {
         
+        const newTodo = new Todo ({
+            title,
+        })
+
+        const todo = await newTodo.save()
+
+        return todo;
+    },
+
+    deleteTodo: async () => {
+
     }
 }

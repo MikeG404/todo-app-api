@@ -1,32 +1,20 @@
 import "dotenv/config"
+import "express-async-errors"
 import express from "express"
 import morgan from "morgan"
 
 import { connectDB } from "./lib/db.js";
-
-import { Todo } from "./models/todo.model.js";
+import {todoController} from "./controllers/todo.controller.js";
 
 const app = express();
 
 connectDB();
 
+app.use(express.json())
+
+app.use('/todo', todoController.addTodo);
+
 morgan('tiny');
-
-const newTodo = new Todo ({
-    title: "Apprendre Javascript",
-})
-
-newTodo.save()
-    .then((todo) => {
-        console.log("Notre nouvelle todo ", todo)
-    })
-    .catch((error) => {
-        console.error(error.message)
-    })
-
-app.get('/', (req, res) => {
-    res.send('Hello World')
-})
 
 app.listen(3000, () => {
     console.log("Server launched");
