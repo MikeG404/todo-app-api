@@ -11,7 +11,9 @@ const app = express();
 connectDB();
 
 app.use(express.json())
+app.use(morgan('tiny'))
 
+app.use('/todo', todoController.getTodos);
 app.use('/todo', todoController.addTodo);
 
 morgan('tiny');
