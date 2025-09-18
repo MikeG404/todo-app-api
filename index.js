@@ -13,6 +13,7 @@ connectDB();
 app.use(express.json())
 app.use(morgan('tiny'))
 
+app.use('/todo/:id', todoController.deleteTodo);
 app.use('/todo', todoController.getTodos);
 app.use('/todo', todoController.addTodo);
 

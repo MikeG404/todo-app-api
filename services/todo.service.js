@@ -23,7 +23,13 @@ export const todoService = {
         return todo;
     },
 
-    deleteTodo: async () => {
+    deleteTodo: async (_id) => {
+        const todoDelted = await Todo.deleteOne({_id})
 
+        if (!todoDelted) {
+            console.log('Delted');
+        }
+
+        return todoDelted
     }
 }

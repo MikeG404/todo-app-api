@@ -27,6 +27,14 @@ export const todoController = {
     },
 
     deleteTodo: async (req, res) => {
-        
+        const id = req.params.id;
+
+        const deletedTodo = await todoService.deleteTodo(id);
+
+        if (!deletedTodo) {
+            return res.status(400)
+        }
+
+        return res.status(200).json(deletedTodo)
     }
 }
