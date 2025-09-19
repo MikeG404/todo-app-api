@@ -15,9 +15,9 @@ app.use(express.json())
 app.use(morgan('tiny'))
 app.use(cors())
 
-app.use('/todo', todoController.addTodo);
-app.use('/todo/:id', todoController.deleteTodo);
-app.use('/todo', todoController.getTodos);
+app.post('/todo', todoController.addTodo);
+app.delete('/todo/:id', todoController.deleteTodo);
+app.get('/todo', todoController.getTodos);
 
 morgan('tiny');
 
