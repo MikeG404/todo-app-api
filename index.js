@@ -18,8 +18,8 @@ app.use(cors())
 app.post('/todo', todoController.addTodo);
 app.delete('/todo/:id', todoController.deleteTodo);
 app.get('/todo', todoController.getTodos);
+app.put('/todo/reorder', todoController.updateTodosOrder);
 
-morgan('tiny');
 
 app.listen(3000, () => {
     console.log("Server launched");

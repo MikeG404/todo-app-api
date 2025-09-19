@@ -11,6 +11,10 @@ const todoSchema = Schema({
         type: Boolean,
         default: false,
         required: true
+    },
+    position: {
+        type: Number,
+        required: true
     }
 })
 
