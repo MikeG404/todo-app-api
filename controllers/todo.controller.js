@@ -97,5 +97,15 @@ export const todoController = {
             console.error('Error deleting todo:', error);
             return res.status(500).json({ error: "Internal server error" });
         }
+    },
+
+    deleteCompleted: async (_req, res) => {
+        try {
+            const result = await todoService.deleteCompleted();
+            return res.status(200).json({ deletedCount: result.deletedCount });
+        } catch (error) {
+            console.error('Error deleting completed todos:', error);
+            return res.status(500).json({ error: "Internal server error" });
+        }
     }
 }

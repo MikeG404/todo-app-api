@@ -71,6 +71,12 @@ export const todoService = {
         return todoDeleted;
     },
 
+    deleteCompleted: async () => {
+        const result = await Todo.deleteMany({ isCompleted: true });
+        await todoService.reorderPositions();
+        return result;
+    },
+
     reorderPositions: async () => {
         const todos = await Todo.find().sort({ position: 1 });
         

@@ -19,6 +19,7 @@ app.post('/todo', todoController.addTodo);
 app.get('/todo', todoController.getTodos);
 app.put('/todo/reorder', todoController.updateTodosOrder);
 app.put('/todo/:id', todoController.updateTodo);
+app.delete('/todo/completed', todoController.deleteCompleted);
 app.delete('/todo/:id', todoController.deleteTodo);
 
 
