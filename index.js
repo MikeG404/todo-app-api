@@ -16,9 +16,10 @@ app.use(morgan('tiny'))
 app.use(cors())
 
 app.post('/todo', todoController.addTodo);
-app.delete('/todo/:id', todoController.deleteTodo);
 app.get('/todo', todoController.getTodos);
 app.put('/todo/reorder', todoController.updateTodosOrder);
+app.put('/todo/:id', todoController.updateTodo);
+app.delete('/todo/:id', todoController.deleteTodo);
 
 
 app.listen(3000, () => {

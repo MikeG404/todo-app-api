@@ -12,9 +12,10 @@ export const todoService = {
     },
 
     addTodo: async (title) => {
-        // Récupérer la position la plus élevée pour ajouter à la fin
+        // Récupérer la position la plus élevée pour ajouter à la fin (sécurisé)
         const lastTodo = await Todo.findOne().sort({ position: -1 });
-        const newPosition = lastTodo ? lastTodo.position + 1 : 0;
+        const lastPos = lastTodo && typeof lastTodo.position === 'number' ? lastTodo.position : -1;
+        const newPosition = lastPos + 1;
         
         const newTodo = new Todo({
             title,
@@ -27,6 +28,7 @@ export const todoService = {
     },
 
     updateTodo: async (id, updates) => {
+        console.log('[service.updateTodo] id =', id, 'updates =', updates);
         const todo = await Todo.findByIdAndUpdate(
             id, 
             updates, 

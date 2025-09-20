@@ -42,6 +42,8 @@ export const todoController = {
             const { id } = req.params;
             const updates = req.body;
 
+            console.log('[PUT /todo/:id] id =', id, 'updates =', updates);
+
             if (!id) {
                 return res.status(400).json({ error: "Todo ID is required" });
             }
